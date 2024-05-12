@@ -1,0 +1,1 @@
+[omega,IT,cputime,res]=SOR_eg(64,300,1.3,1.7,0.01)
