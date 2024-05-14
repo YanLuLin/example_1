@@ -1,4 +1,5 @@
 function [opt_omega,opt_gamma,opt_IT,opt_cputime,res]=AOR_eg(m,maxit,omega_0,omega_N,delta_omega,gamma_0,gamma_N,delta_gamma)
+n=m^2;
 tol=1.0e-6;
 [A,b,xk] = eg_1(m);
 N_omega=floor((omega_N-omega_0)/delta_omega);       
@@ -7,7 +8,7 @@ for j=1:N_omega
     omega(j)=omega_0+j*delta_omega;
     for k=1:N_gamma
         gamma(j,k)=gamma_0+k*delta_gamma;
-        [IT(j,k),cputime(j,k),res(j,k)]=AOR(A,b,xk,omega(j),gamma(j,k),tol,maxit); 
+        [IT(j,k),cputime(j,k),res(j,k)]=AOR(n,A,b,xk,omega(j),gamma(j,k),tol,maxit); 
     end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
